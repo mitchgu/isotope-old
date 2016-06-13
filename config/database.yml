@@ -8,12 +8,12 @@ default: &default
   adapter: postgresql
   encoding: utf8
   pool: 5
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
 
 development:
   <<: *default
   database: isotope_dev
-  username: isotope
-  password: isotope
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
