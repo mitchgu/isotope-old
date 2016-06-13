@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "/about/" => "about#show", page: "home"
   get "/about/:page" => "about#show"
 
+  # Profile
+  get '/profile' => "users#show"
+
   # Creating users
   get '/register' => 'users#new'
   post '/users' => 'users#create'

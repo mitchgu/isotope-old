@@ -10,4 +10,5 @@
   %section
     Password: #{password_field_tag :password}
   %section
+    = hidden_field_tag(:redirect_to, params[:redirect_to])
     = submit_tag "Submit"
