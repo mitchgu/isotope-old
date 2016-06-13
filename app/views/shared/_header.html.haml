@@ -1,0 +1,7 @@
+%header
+  #brand ISOTOPE
+  - if current_user
+    = link_to "Profile", "/profile"
+  - else
+    = link_to "Register", "/register"
+    = link_to "Login", "/login"

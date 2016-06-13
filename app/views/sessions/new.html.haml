@@ -1,14 +1,7 @@
-%h1
+%h1 Log in to ISOTOPE
 
 - flash.each do |key, value|
   %div(class="alert alert-#{key}")
     = value
 
-= form_tag '/login' do
-  %section
-    Email or Username: #{text_field_tag :email_or_username}
-  %section
-    Password: #{password_field_tag :password}
-  %section
-    = hidden_field_tag(:redirect_to, params[:redirect_to])
-    = submit_tag "Submit"
+= render 'shared/login'
