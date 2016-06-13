@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 # Haml for templating
 gem 'haml', '~> 4.0', '>= 4.0.7'
+gem 'haml-rails', '~> 0.9.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
