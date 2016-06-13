@@ -1,7 +1,18 @@
-%header
-  #brand ISOTOPE
-  - if current_user
-    = link_to "Profile", "/profile"
-  - else
-    = link_to "Register", "/register"
-    = link_to "Login", "/login"
+%header#header.uk-navbar
+  .uk-container.uk-container-center
+    .uk-navbar-nav
+      #brand
+        = link_to "ISOTOPE", "/", class: "uk-navbar-brand"
+
+    .uk-navbar-flip
+      .uk-navbar-nav
+        - if current_user
+          %li
+            = link_to "Your profile", "/profile", class: "uk-button"
+          %li
+            = link_to "Logout", "/logout", class: "uk-button"
+        - else
+          %li
+            = link_to "Register", "/register", class: "uk-button"
+          %li
+            = link_to "Login", "/login", class: "uk-button"
