@@ -1,19 +1,8 @@
 %section.left-more
   %h4 Placeholder
-%aside#login-or-register.right-less
-  #login-panel
-    = render 'shared/login'
-  #register-panel(style="display: none")
-    = render 'shared/register'
-
-= content_for :head do
-  :coffee
-    $ ->
-      $("#register-link").click (e) ->
-        $("#login-panel").fadeOut 100, ->
-          $("#register-panel").fadeIn 100
-        e.preventDefault()
-      $("#login-link").click (e) ->
-        $("#register-panel").fadeOut 100, ->
-          $("#login-panel").fadeIn 100
-        e.preventDefault()
+%aside.right-less.panel
+  - if current_user
+    %h3 Welcome, #{current_user.username}!
+    %p View your #{link_to "dashboard", "/dashboard"} or #{link_to "log out", "/logout"}
+  - else
+    = render "shared/login_or_register"

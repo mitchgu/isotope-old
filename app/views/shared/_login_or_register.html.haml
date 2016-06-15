@@ -1,0 +1,17 @@
+#login-or-register
+  #login-panel
+    = render 'shared/login'
+  #register-panel(style="display: none")
+    = render 'shared/register'
+
+= content_for :head do
+  :coffee
+    $ ->
+      $("#register-link").click (e) ->
+        $("#login-panel").fadeOut 100, ->
+          $("#register-panel").fadeIn 100
+        e.preventDefault()
+      $("#login-link").click (e) ->
+        $("#register-panel").fadeOut 100, ->
+          $("#login-panel").fadeIn 100
+        e.preventDefault()
