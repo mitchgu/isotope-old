@@ -2,3 +2,18 @@
   @include outer-container;
   padding: $content-padding 0;
 }
+
+#login-form, #register-form {
+  .register-or-login-switch {
+    padding-left: 10px;
+  }
+}
+
+#register-form {
+  #user_first_name, #user_last_name {
+    @include span-columns(6);
+  }
+  #user_last_name {
+    @include omega();
+  }
+}

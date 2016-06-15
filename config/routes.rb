@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get '/profile' => "users#show"
 
   # Creating users
+  get '/register' => 'users#new'
   post '/users' => 'users#create'
 
   # Managing sessions
+  get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 

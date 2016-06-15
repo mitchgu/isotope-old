@@ -1,13 +1,13 @@
-%h1 Create an ISOTOPE User
+%h3 Register
 
-= form_for :user, url: '/users' do |f|
-  %section
-    Username: #{f.text_field :username}
-  %section
-    Email: #{f.text_field :email}
-  %section
-    Password: #{f.password_field :password}
-  %section
-    Confirm Password: #{f.password_field :password_confirmation}
-  %section
-    = f.submit "Submit"
+= form_for :user, url: '/users', html: {id: "register-form"} do |f|
+  = f.text_field :username, placeholder: "Username"
+  = f.text_field :email, placeholder: "Email"
+  = f.text_field :first_name, placeholder: "First name"
+  = f.text_field :last_name, placeholder: "Last name"
+  = f.password_field :password, placeholder: "Password"
+  = f.password_field :password_confirmation, placeholder: "Confirm Password"
+  = f.submit "Submit"
+  %span.register-or-login-switch
+    or
+    = link_to "log into an existing account", "/login", id: "login-link"
