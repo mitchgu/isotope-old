@@ -21,9 +21,16 @@ $base-z-index: 0;
 
 // Colors
 $blue: #1565c0;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #ddd;
+$gray-ff: #222;
+$gray-f: #444;
+$gray-mf: #666;
+$gray-m: #999;
+$gray-mp: #bbb;
+$gray-p: #eee;
+$gray-pp: #fafafa;
+$dark-gray: $gray-f;
+$medium-gray: $gray-m;
+$light-gray: $gray-p;
 
 // Font Colors
 $base-font-color: $dark-gray;

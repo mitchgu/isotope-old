@@ -1,0 +1,13 @@
+// Header
+$header-height: 5rem;
+$brand-height: 3rem;
+$brand-font-size: 2rem;
+$brand-font: Montserrat, sans-serif;
+
+// Content
+$content-padding: 2rem;
+
+// Breakpoints
+$mobile: new-breakpoint(max-width 480px 4);
+$tablet: new-breakpoint(max-width 760px 8);
+$medium: new-breakpoint(max-width 1024px 12);

@@ -1,0 +1,4 @@
+#content {
+  @include outer-container;
+  padding: $content-padding 0;
+}

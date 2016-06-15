@@ -1,0 +1,19 @@
+#header{
+  height: $header-height;
+  border-bottom: 1px solid $gray-p;
+  background-color: $gray-pp;
+  overflow: hidden;
+  #brand {
+    height: $brand-height;
+    margin: ($header-height - $brand-height) / 2;
+    font-family: $brand-font;
+    font-size: $brand-font-size;
+    text-align: center;
+    a {
+      color: $gray-f;
+      &:hover {
+        color: $gray-mf;
+      }
+    }
+  }
+}

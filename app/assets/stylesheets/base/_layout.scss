@@ -1,3 +1,8 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -6,4 +11,12 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+.left-more {
+  @include span-columns(8);
+}
+
+.right-less {
+  @include span-columns(4);
 }

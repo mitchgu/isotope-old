@@ -11,6 +11,15 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bourbon"
-@import "neat"
-@import "base/base"
+// 3rd party
+@import "bourbon";
+@import "neat";
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+
+// Local
+// Base partials for more general things
+@import "base/base";
+// Very markup specific styles
+@import "variables";
+@import "header";
+@import "content";

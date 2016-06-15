@@ -1,14 +1,3 @@
 %header#header
   #brand
-    = link_to "ISOTOPE", "/", class: "uk-navbar-brand"
-  %nav
-    - if current_user
-      %li
-        = link_to "Your profile", "/profile", class: "uk-button"
-      %li
-        = link_to "Logout", "/logout", class: "uk-button"
-    - else
-      %li
-        = link_to "Register", "/register", class: "uk-button"
-      %li
-        = link_to "Login", "/login", class: "uk-button"
+    = link_to "ISOTOPE", "/"
