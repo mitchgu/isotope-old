@@ -1,9 +1,9 @@
 $base-spacing: 1.5em !default;
 $flashes: (
-  "alert": $alert-color,
-  "error": $error-color,
-  "notice": $notice-color,
-  "success": $success-color,
+  "alert": $alert-bg-color,
+  "error": $error-bg-color,
+  "notice": $notice-bg-color,
+  "success": $success-bg-color,
 ) !default;
 
 @each $flash-type, $color in $flashes {

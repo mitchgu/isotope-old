@@ -35,10 +35,14 @@ $light-gray: $gray-p;
 // Font Colors
 $base-font-color: $dark-gray;
 $action-color: $blue;
-$alert-color: #fff6bf;
-$error-color: #fbe3e4;
-$notice-color: #e5edf8;
-$success-color: #e6efc2;
+$alert-bg-color: #fff6bf;
+$error-bg-color: #fbe3e4;
+$notice-bg-color: #e5edf8;
+$success-bg-color: #e6efc2;
+$alert-color: darken($alert-bg-color, 50%);
+$error-color: darken($error-bg-color, 50%);
+$notice-color: darken($notice-bg-color, 50%);
+$success-color: darken($success-bg-color, 50%);
 
 // Border
 $base-border-color: $light-gray;
