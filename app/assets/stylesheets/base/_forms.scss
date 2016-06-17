@@ -81,19 +81,3 @@ select {
   max-width: 100%;
   width: auto;
 }
-
-form .validated {
-  .input-valid {
-    color: $success-color;
-  }
-  .input-invalid {
-    color: $error-color;
-  }
-  .hint {
-    @extend .flash-alert;
-    display: none;
-    font-size: .75rem;
-    padding: $base-spacing / 4;
-    margin-top: -$base-spacing / 2;
-  }
-}

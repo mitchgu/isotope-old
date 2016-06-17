@@ -8,6 +8,6 @@ $brand-font: Montserrat, sans-serif;
 $content-padding: 2rem;
 
 // Breakpoints
-$mobile: new-breakpoint(max-width 480px 4);
-$tablet: new-breakpoint(max-width 760px 8);
+$mobile: new-breakpoint(max-width 480px 12);
+$tablet: new-breakpoint(max-width 760px 12);
 $medium: new-breakpoint(max-width 1024px 12);

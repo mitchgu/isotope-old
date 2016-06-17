@@ -17,9 +17,12 @@
 @import "https://fonts.googleapis.com/css?family=Montserrat";
 
 // Local
-// Base partials for more general things
+// Base styles from bitter
 @import "base/base";
-// Very markup specific styles
+// Isotope specific things
 @import "variables";
+@import "layout";
+@import "flashes";
+@import "forms";
 @import "header";
 @import "content";

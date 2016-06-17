@@ -1,0 +1,37 @@
+@mixin responsive-cols($mob, $tab, $med, $default) {
+  @include span-columns($default);
+  @include media($medium) {
+    @include span-columns($med);
+  }
+  @include media($tablet) {
+    @include span-columns($tab);
+  }
+  @include media($mobile) {
+    @include span-columns($mob);
+  }
+}
+@mixin responsive-shift($mob, $tab, $med, $default) {
+  @include shift($default);
+  @include media($medium) {
+    @include shift($med);
+  }
+  @include media($tablet) {
+    @include shift($tab);
+  }
+  @include media($mobile) {
+    @include shift($mob);
+  }
+}
+
+.left-more {
+  @include responsive-cols(12, 12, 8, 8);
+}
+
+.right-less {
+  @include responsive-cols(12, 12, 4, 4);
+}
+
+.center-less {
+  @include responsive-cols(12, 8, 6, 4);
+  @include responsive-shift(0, 2, 3, 4);
+}

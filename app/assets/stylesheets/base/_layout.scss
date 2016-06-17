@@ -12,16 +12,3 @@ html {
 *::after {
   box-sizing: inherit;
 }
-
-.left-more {
-  @include span-columns(8);
-}
-
-.right-less {
-  @include span-columns(4);
-}
-
-.center-less {
-  @include span-columns(4);
-  @include shift(4);
-}
