@@ -4,7 +4,7 @@
   #register-panel(style="display: none")
     = render 'shared/register'
 
-= content_for :head do
+= content_for :body_script do
   :coffee
     $ ->
       $("#register-link").click (e) ->
