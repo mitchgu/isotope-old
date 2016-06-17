@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to action: "show"
       return
     else
+      flash[:alert] = user.errors.full_messages.map{|e| "<li>#{e}</li>"}.join("\n")
       redirect_to action: "new"
       return
     end
