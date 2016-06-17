@@ -1,13 +1,24 @@
 %h3 Register
 
 = form_for :user, url: '/users', html: {id: "register-form"} do |f|
-  = f.text_field :username, placeholder: "Username"
-  = f.text_field :email, placeholder: "Email"
+  = f.text_field :username, placeholder: "Username", required: "", pattern: "^[A-Za-z0-9\.\-\_]{3,50}$", title: "Must be 3 to 50 characters (alphanumerics, periods, dashes, or underscores)"
+  = f.text_field :email, placeholder: "Email", required: "", type: "email", title: "Must be a valid email"
   = f.text_field :first_name, placeholder: "First name"
   = f.text_field :last_name, placeholder: "Last name"
-  = f.password_field :password, placeholder: "Password"
-  = f.password_field :password_confirmation, placeholder: "Confirm Password"
+  = f.password_field :password, placeholder: "Password", required: "", pattern: ".{6,50}", title: "Must be 6 to 50 characters"
+  = f.password_field :password_confirmation, placeholder: "Confirm Password", required: ""
   = f.submit "Submit"
   %span.register-or-login-switch
     or
     = link_to "log into an existing account", "/login", id: "login-link"
+
+= content_for :body_script do
+  :coffee
+    $ ->
+      $("#user_password_confirmation").on "input", ->
+        if this.value != $('#user_password').val()
+          this.setCustomValidity 'Passwords must match'
+        else
+          # input is valid -- reset the error message
+          this.setCustomValidity ''
+        return
