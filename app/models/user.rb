@@ -6,10 +6,18 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { in: 6..50 }
   # Password confirmation is validated in the next line
   has_secure_password
+  after_commit :send_activation_email, on: :create
 
   def is_superuser
     if ENV["SUPERUSERS"]
       return ENV["SUPERUSERS"].split(",").include? username
     end
   end
+
+private
+
+  def send_activation_email
+      UserMailer.delay.activation_email(self)
+  end
+
 end
