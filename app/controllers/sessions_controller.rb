@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       # Save the user id inside the browser cookie. This is how we keep the user
       # logged in when they navigate around our website.
       session[:user_id] = user.id
-      redirect_to params[:redirect_to] ||= "/dashboard"
+      redirect_to params[:redirect_to] ||= dashboard_path
     else
       # If user's login doesn't work, send them back to the login form.
       flash[:error] = "Invalid credentials"
