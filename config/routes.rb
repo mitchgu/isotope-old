@@ -6,16 +6,16 @@ Rails.application.routes.draw do
   get "/about/:page" => "about#show"
 
   # Dashboard
-  get '/dashboard' => "users#show"
+  get '/dashboard' => "users#show", as: "dashboard"
 
   # Creating users
-  get '/register' => 'users#new'
-  post '/users' => 'users#create'
+  get '/register' => 'users#new', as: "register"
+  post '/users' => 'users#create', as: "register_submit"
 
   # Managing sessions
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/login' => 'sessions#new', as: "login"
+  post '/login' => 'sessions#create', as: "login_submit"
+  get '/logout' => 'sessions#destroy', as: "logout"
 
-  root "about#show", page: "home"
+  root "about#show", page: "home", as: "home"
 end

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
-      redirect_to "/login?redirect_to=#{request.path}",
+      redirect_to login_path(redirect_to: request.path),
         notice: "You must be logged in to perform this action"
     end
   end

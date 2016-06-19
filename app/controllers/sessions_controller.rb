@@ -19,16 +19,16 @@ class SessionsController < ApplicationController
       # If user's login doesn't work, send them back to the login form.
       flash[:error] = "Invalid credentials"
       if params[:redirect_to]
-        redirect_to "/login?redirect_to=#{params[:redirect_to]}"
+        redirect_to login_path(redirect_to: params[:redirect_to])
       else
-        redirect_to "/login"
+        redirect_to login_path
       end
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/'
+    redirect_to home_path
   end
 
 end

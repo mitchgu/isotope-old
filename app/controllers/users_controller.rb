@@ -14,11 +14,11 @@ class UsersController < ApplicationController
       user.save
       session[:user_id] = user.id
       UserMailer.delay.activation_email(user)
-      redirect_to action: "show"
+      redirect_to dashboard_path
       return
     else
       flash[:error] = user.errors.full_messages.map{|e| "<li>#{e}</li>"}.join("\n")
-      redirect_to action: "new"
+      redirect_to register_path
       return
     end
   end
