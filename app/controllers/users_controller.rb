@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:user_id] = user.id
+      UserMailer.delay.activation_email(user)
       redirect_to action: "show"
       return
     else

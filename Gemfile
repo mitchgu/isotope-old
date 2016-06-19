@@ -29,6 +29,8 @@ gem 'haml-rails', '~> 0.9.0'
 # Bourbon, Neat SASS
 gem 'bourbon'
 gem 'neat'
+# Sidekiq for email queuing
+gem 'sidekiq'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
