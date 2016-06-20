@@ -24,6 +24,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def activate
+    if params[:token]
+      at = ActivationToken.from_token(params[:token]) or not_found
+      at.user.update(activated: true)
+      at.destroy
+      log_in at.user
+      redirect_to home_path, notice: "Account activated!"
+    else
+      not_found
+    end
+  end
+
+  def resend_activation
+    @current_user.send_activation_email
+    redirect_to profile_path, notice: "Activation email resent"
+  end
+
 private
 
   def user_params

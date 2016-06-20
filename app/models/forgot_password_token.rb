@@ -1,0 +1,2 @@
+class ForgotPasswordToken < UserToken
+end

@@ -1,3 +1,4 @@
-%p
-  Activate your account here:
-  = @user.username
+%p Welcome to ISOTOPE, #{@user.username}!
+%p To activate your account and enable all features, follow the following link:
+
+= link_to @link, @link

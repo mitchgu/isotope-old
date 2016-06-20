@@ -40,6 +40,10 @@ private
         alert: "Please sign in first."
     end
   end
+
+  def ensure_activated
+    unless @current_user.activated
+      redirect_to profile_path, alert: "Please activate your account first."
     end
   end
 
@@ -61,6 +65,10 @@ private
 
   def register_login_token(token)
     cookies.permanent[:login_token] = token.serialize
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 
   helper_method :current_user
