@@ -35,6 +35,7 @@ class User < ApplicationRecord
   def self.from_login_token(serialized_login_token)
     token_hash = LoginToken.deserialize(serialized_login_token)
     user = find_by_id(token_hash[:user_id])
+    return if !user
     if lt = user.login_tokens.find_by_series(token_hash[:series])
       # A LT from this series was found, check the token
       if lt.valid_token?(token_hash[:token])
