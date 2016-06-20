@@ -8,3 +8,8 @@ Rails.application.config.action_mailer.smtp_settings = {
   :password       => ENV['SMTP_PASSWORD'],
   :authentication => :plain,
 }
+
+
+Rails.application.config.action_mailer.default_url_options = {
+  host: ENV["HOST"]
+}
