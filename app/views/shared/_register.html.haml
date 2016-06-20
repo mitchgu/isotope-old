@@ -18,7 +18,7 @@
   = f.submit "Submit"
   %span.register-or-login-switch
     or
-    = link_to "log into an existing account", "/login", id: "login-link"
+    = link_to "log into an existing account", login_path, id: "login-link"
 
 = content_for :body_script do
   :coffee

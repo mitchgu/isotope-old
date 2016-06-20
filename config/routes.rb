@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   get "/about/:page" => "about#show"
 
   # Dashboard
-  get '/dashboard' => "users#show", as: "dashboard"
+  get '/profile' => "users#show", as: "profile"
 
-  # Creating users
+  # Managing users
   get '/register' => 'users#new', as: "register"
   post '/users' => 'users#create', as: "register_submit"
+  get '/activate/:token' => 'users#activate', as: "activate"
+  get '/resend-activation' => 'users#resend_activation', as: "resend_activation"
 
   # Managing sessions
   get '/login' => 'sessions#new', as: "login"
