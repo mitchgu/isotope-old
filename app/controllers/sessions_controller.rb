@@ -4,16 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:email_or_username].include? "@"
-      user = User.find_by_email(params[:email_or_username])
-    else
-      user = User.find_by_username(params[:email_or_username])
+    if @current_user
+      # If they're logged in already don't do it again
+      return redirect_to params[:redirect_to] ||= dashboard_path
     end
+    user = params[:email_or_username].include?("@") ?
+      User.find_by_email(params[:email_or_username]) :
+      User.find_by_username(params[:email_or_username])
     # If the user exists AND the password entered is correct.
     if user && user.authenticate(params[:password])
-      # Save the user id inside the browser cookie. This is how we keep the user
-      # logged in when they navigate around our website.
-      session[:user_id] = user.id
+      log_in(user)
+      if params[:remember]
+        register_login_token(user.new_login_token)
+      end
       redirect_to params[:redirect_to] ||= dashboard_path
     else
       # If user's login doesn't work, send them back to the login form.
@@ -27,7 +30,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    if logged_in?
+      log_out
+      flash[:notice] = "You have successfully logged out"
+    end
     redirect_to home_path
   end
 

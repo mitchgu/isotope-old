@@ -1,8 +1,4 @@
 %section.left-more
   %h4 Placeholder
 %aside.right-less.panel
-  - if current_user
-    %h3 Welcome, #{current_user.username}!
-    %p View your #{link_to "dashboard", "/dashboard"} or #{link_to "log out", "/logout"}
-  - else
-    = render "shared/login_or_register"
+  = render "shared/login_or_register"
