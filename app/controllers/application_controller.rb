@@ -37,7 +37,9 @@ private
   def ensure_logged_in
     unless @current_user
       redirect_to login_path(redirect_to: request.path),
-        notice: "Please sign in first."
+        alert: "Please sign in first."
+    end
+  end
     end
   end
 

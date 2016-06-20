@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
-  before_action :ensure_logged_in, except: [:new, :create]
+  before_action :ensure_logged_in, only: :show
 
   def new
+    # Register form view
   end
 
   def show
+    # Dashboard view
   end
 
   def create

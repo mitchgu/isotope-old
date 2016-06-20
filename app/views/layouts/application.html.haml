@@ -8,6 +8,7 @@
   %body
     = render 'shared/header'
     #content
+      = render 'shared/flash'
       = yield
 
     = yield :body_script
