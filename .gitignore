@@ -13,9 +13,12 @@ vendor/bundle
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
+/tmp/*.*
 !/tmp/.keep
+/tmp/*/*
+!/tmp/pids/.keep
+!/tmp/sockets/.keep
 
 # Ignore Byebug command history file.
 .byebug_history
