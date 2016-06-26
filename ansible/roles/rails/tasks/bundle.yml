@@ -1,0 +1,4 @@
+---
+- name: Install bundled gems
+  bundler:
+    chdir: "{{ app_dir }}"

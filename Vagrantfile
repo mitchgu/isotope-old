@@ -45,10 +45,8 @@ Vagrant.configure("2") do |config|
     ansible.extra_vars = {
       vm: true,
       rails_env: "development",
-      app_addrs: ["192.168.33.10"],
-      db_addr: "192.168.33.20"
+      app_hosts: ["192.168.33.10"],
     }
-    ansible.verbose = "vvv"
     ansible.ask_vault_pass = true
   end
 

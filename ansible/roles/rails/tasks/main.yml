@@ -1,54 +1,32 @@
 ---
-- name: Install app server packages
-  apt:
-    pkg: "{{ item }}"
-  become: yes
-  with_items:
-    - ruby
-    - ruby-dev
-    - libpq-dev
-    - nodejs
+# Setup ruby
+- include: setup.yml
 
-- name: Install bundler gem
-  command: gem install bundler
-  args:
-    creates: /usr/local/bin/bundle
-  become: yes
-
-- name: Install foreman gem
-  command: gem install foreman
-  args:
-    creates: /usr/local/bin/foreman
-  become: yes
-
-- name: Clone code repo
-  git:
-    repo: "{{ app_repo }}"
-    dest: "{{ app_dir }}"
-    accept_hostkey: yes
-  register: code_updated
-  notify: restart rails
+# Install the app sources
+- include: src.yml
   when: vm is not defined
 
-- name: Install bundled gems
-  bundler:
-    chdir: "{{ app_dir }}"
+# Install bundle
+- include: bundle.yml
 
 - name: Copy dotenv
   template:
     src: .env.j2
     dest: "{{ app_dir }}/.env"
 
-- name: Export foreman to systemd
-  command: foreman export systemd /lib/systemd/system -a {{ app_name }} -u {{ ansible_ssh_user }}
-  args:
-    chdir: "{{ app_dir }}"
-  become: yes
+# Update systemd target
+- include: systemd.yml
   when: code_updated and vm is not defined
 
-# Do migrations manually in vagrant
+# Do migrations manually in development
 - name: Migrate db
-  command: rails db:migrate
+  command: bundle exec rails db:migrate
   args:
     chdir: "{{ app_dir }}"
   when: code_updated and vm is not defined
+
+- name: Precompile assets
+  command: bundle exec rails assets:precompile
+  args:
+    chdir: "{{ app_dir }}"
+  when: code_updated

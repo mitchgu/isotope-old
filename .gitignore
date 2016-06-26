@@ -37,3 +37,14 @@ vendor/bundle
 
 # Ansible logs
 ansible/**/*.log
+
+# Ansible deploy keys
+ansible/deploy_keys/*
+!ansible/deploy_keys/.gitkeep
+
+# Ansible env vars
+ansible/env_vars/*
+!ansible/env_vars/base.yml
+
+# Ansible inventories
+ansible/production

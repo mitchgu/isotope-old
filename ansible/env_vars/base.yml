@@ -1,11 +1,12 @@
 ---
 domain_name: locahost
-rails_env: development
+app_ips: 127.0.0.1
 db_name: isotope_dev
 db_user: isotope
 db_pass: isotope
 
 env_vars:
+  RAILS_ENV: "{{ rails_env }}"
   # SEKRITS
   SECRET_KEY_BASE: 647131774d42882d200dbd66ac74150e9d33e146ed4193edc127acc72b6b6d061dd36514e5682c7092b5cf14a73d4b891df243091c119b38a17bf31486e76bfc
   # Database settings

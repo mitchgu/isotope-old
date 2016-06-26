@@ -1,3 +1,4 @@
+---
 - name: App server setup
   hosts: app
   gather_facts: no

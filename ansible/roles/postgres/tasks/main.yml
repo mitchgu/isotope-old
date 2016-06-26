@@ -17,12 +17,12 @@
   become: yes
   notify: restart postgres
 
-- name: Allow postgres access from app server
+- name: Allow postgres access from app servers
   lineinfile:
     dest: /etc/postgresql/9.5/main/pg_hba.conf
     line: host {{ db_name }} {{ db_user }} {{ item }}/32 trust
   become: yes
-  with_items: "{{ app_addrs }}"
+  with_items: "{{ app_ips }}"
   notify: restart postgres
 
 - name: Ensure postgres is running
