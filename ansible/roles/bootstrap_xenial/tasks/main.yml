@@ -1,0 +1,12 @@
+---
+- name: Install python
+  raw: sudo apt-get install -y python
+
+- name: Add ubuntu-xenial to hosts file
+  lineinfile:
+    dest: /etc/hosts
+    line: 127.0.0.1 ubuntu-xenial
+  become: yes
+
+- name: Gathering facts
+  setup:

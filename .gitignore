@@ -22,5 +22,17 @@ vendor/bundle
 # Ignore Byebug command history file.
 .byebug_history
 
+# rbenv version
+.ruby-version
+
 # Ignore Dotenv file
 .env
+
+# Ignore Vagrant metadata
+.vagrant
+
+# Ansible retry filesss
+*.retry
+
+# Ansible logs
+ansible/**/*.log

@@ -1,0 +1,34 @@
+---
+- name: Install nginx
+  apt:
+    pkg: nginx
+  become: yes
+
+- name: Remove default nginx template
+  file:
+    state: absent
+    path: "{{ item }}"
+  become: yes
+  with_items:
+    - /etc/nginx/sites-enabled/default
+    - /etc/nginx/sites-available/default
+
+- name: Install nginx site conf
+  template:
+    src: "{{ item }}.conf.j2"
+    dest: /etc/nginx/sites-available/{{ item }}.conf
+    owner: root
+    group: root
+  become: yes
+  with_items:
+    - "{{ nginx_sites }}"
+
+- name: Symlink nginx site config
+  file:
+    state: link
+    src: /etc/nginx/sites-available/{{ item }}.conf
+    dest: /etc/nginx/sites-enabled/{{ item }}.conf
+  become: yes
+  notify:
+    - restart nginx
+  with_items: "{{ nginx_sites }}"

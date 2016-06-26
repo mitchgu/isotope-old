@@ -10,6 +10,7 @@ class User < ApplicationRecord
   after_commit :send_activation_email, on: :create
 
   has_many :login_tokens
+  has_many :user_tokens
 
   def is_superuser
     if ENV["SUPERUSERS"]

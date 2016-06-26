@@ -9,7 +9,6 @@ Rails.application.config.action_mailer.smtp_settings = {
   :authentication => :plain,
 }
 
-
 Rails.application.config.action_mailer.default_url_options = {
-  host: ENV["HOST"]
+  host: ENV["EMAIL_DEFAULT_HOST"]
 }

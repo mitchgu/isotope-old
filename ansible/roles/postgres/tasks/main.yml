@@ -1,0 +1,48 @@
+---
+- name: Install postgres
+  apt:
+    pkg: "{{ item }}"
+  become: yes
+  with_items:
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+    - python-psycopg2
+
+- name: Make postgres listen on all addresses
+  lineinfile:
+    dest: /etc/postgresql/9.5/main/postgresql.conf
+    line: listen_addresses = '*'
+    insertbefore: \#listen_addresses
+  become: yes
+  notify: restart postgres
+
+- name: Allow postgres access from app server
+  lineinfile:
+    dest: /etc/postgresql/9.5/main/pg_hba.conf
+    line: host {{ db_name }} {{ db_user }} {{ item }}/32 trust
+  become: yes
+  with_items: "{{ app_addrs }}"
+  notify: restart postgres
+
+- name: Ensure postgres is running
+  command: systemctl start postgresql
+  become: yes
+
+- name: Create database
+  postgresql_db:
+    name: "{{ db_name }}"
+    encoding: UTF-8
+  become: yes
+  become_user: postgres
+  when: db_name is defined
+
+- name: Create database user
+  postgresql_user:
+    db: "{{ db_name }}"
+    name: "{{ db_user }}"
+    password: "{{ db_pass }}"
+    priv: ALL
+  become: yes
+  become_user: postgres
+  when: db_user is defined

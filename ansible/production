@@ -1,0 +1,11 @@
+[app]
+plugin-app-01.mitchgu.com hostname=plugin-app-01 ansible_ssh_user=ubuntu
+
+[db]
+plugin-db-01.mitchgu.com hostname=plugin-db-01 ansible_ssh_user=ubuntu
+
+[app:vars]
+db_addr=plugin-db-01.mitchgu.com
+
+[db:vars]
+app_addrs=plugin-app-01.mitchgu.com

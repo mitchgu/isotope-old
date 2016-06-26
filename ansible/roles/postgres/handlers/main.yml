@@ -1,0 +1,4 @@
+---
+- name: restart postgres
+  command: systemctl restart postgres
+  become: yes

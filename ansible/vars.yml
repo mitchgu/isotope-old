@@ -1,0 +1,17 @@
+---
+ansible_ssh_user: ubuntu
+
+apt_packages:
+  - git-core        # For git cloning
+  - ntp
+
+app_name: isotope
+app_repo: git@github.com:mitchgu/isotope
+
+domain_name: localhost
+puma_socket: /tmp/{{ app_name }}.sock
+nginx_sites:
+  - "{{ app_name }}"
+
+redis_bind: "0.0.0.0"
+redis_port: 6379

@@ -1,0 +1,13 @@
+- name: App server setup
+  hosts: app
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  pre_tasks:
+    - name: Include environment vars
+      include_vars: env_vars/{{ rails_env }}.yml
+  roles:
+    - role: bootstrap_xenial
+    - role: common
+    - role: nginx
+    - role: rails

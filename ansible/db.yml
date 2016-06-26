@@ -1,0 +1,15 @@
+---
+- name: DB server setup
+  hosts: db
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  pre_tasks:
+    - name: Include environment vars
+      include_vars: env_vars/{{ rails_env }}.yml
+  roles:
+    - role: bootstrap_xenial
+    - role: common
+    - role: postgres
+    - role: DavidWittman.redis
+      become: yes
