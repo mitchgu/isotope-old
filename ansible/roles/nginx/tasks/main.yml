@@ -20,6 +20,8 @@
     owner: root
     group: root
   become: yes
+  notify:
+    - restart nginx
   with_items:
     - "{{ nginx_sites }}"
 
