@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.define "db", primary: true do |instance|
+  config.vm.define "db" do |instance|
     instance.vm.network "private_network", ip: "192.168.33.20"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "isotope-dev-db-01"
