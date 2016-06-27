@@ -9,7 +9,12 @@
       include_vars: env_vars/{{ rails_env }}.yml
   roles:
     - role: bootstrap_xenial
+      tags: "bootstrap"
     - role: common
+      tags: "common"
     - role: nginx
+      tags: "nginx"
     - role: rails
+      tags: "rails"
     - role: iso_cmd
+      tags: "iso"
