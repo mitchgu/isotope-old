@@ -15,6 +15,9 @@
         - always
     - role: common
       tags: common
+    - role: src
+      tags: src
+      when: vm is not defined
     - role: letsencrypt
       when: ssl
       tags: letsencrypt

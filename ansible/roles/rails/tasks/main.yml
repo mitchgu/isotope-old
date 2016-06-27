@@ -2,21 +2,14 @@
 # Setup ruby
 - include: setup.yml
 
-# Install the app sources
-- include: src.yml
-  when: vm is not defined
-
-# Install bundle
-- include: bundle.yml
+- name: Install bundled gems
+  bundler:
+    chdir: "{{ app_dir }}"
 
 - name: Copy dotenv
   template:
     src: .env.j2
     dest: "{{ app_dir }}/.env"
-
-# Update systemd target
-- include: systemd.yml
-  when: code_updated is defined and vm is not defined
 
 # Do migrations manually in development
 - name: Migrate db
@@ -30,3 +23,14 @@
   args:
     chdir: "{{ app_dir }}"
   when: code_updated is defined
+
+# Update systemd target
+- include: systemd.yml
+  when: code_updated is defined and vm is not defined
+
+- name: Restart rails
+  command: systemctl restart {{ app_name }}.target
+  environment:
+    RAILS_ENV: "{{ rails_env }}"
+  when: code_updated
+  become: yes

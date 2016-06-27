@@ -31,6 +31,7 @@
   git:
     repo: "{{ app_repo }}"
     dest: "{{ app_dir }}"
+    accept_hostkey: yes
     force: yes
     key_file: ~/.ssh/{{ app_name }}
   register: code_updated

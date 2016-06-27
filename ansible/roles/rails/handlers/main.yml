@@ -1,6 +1,0 @@
----
-- name: restart rails
-  command: systemctl restart {{ app_name }}.target
-  environment:
-    RAILS_ENV: "{{ rails_env }}"
-  become: yes
