@@ -36,7 +36,7 @@ vendor/bundle
 *.retry
 
 # Ansible logs
-ansible/**/*.log
+**/ubuntu*.log
 
 # Ansible deploy keys
 ansible/deploy_keys/*
