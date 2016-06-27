@@ -37,3 +37,10 @@
     src: "{{ motd_file }}"
     dest: /etc/motd
   become: yes
+
+- name: Create strong DH group
+  command: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+  args:
+    creates: /etc/ssl/certs/dhparam.pem
+  become: yes
+  when: ssl is defined and ssl

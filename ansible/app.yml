@@ -12,6 +12,9 @@
       tags: "bootstrap"
     - role: common
       tags: "common"
+    - role: letsencrypt
+      when: ssl
+      tags: letsencrypt
     - role: nginx
       tags: "nginx"
     - role: rails

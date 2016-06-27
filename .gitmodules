@@ -1,3 +1,6 @@
 [submodule "ansible/roles/DavidWittman.redis"]
 	path = ansible/roles/DavidWittman.redis
 	url = git@github.com:DavidWittman/ansible-redis
+[submodule "ansible/roles/letsencrypt"]
+	path = ansible/roles/letsencrypt
+	url = https://github.com/thefinn93/ansible-letsencrypt.git
