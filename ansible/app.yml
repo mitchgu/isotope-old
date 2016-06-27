@@ -7,17 +7,20 @@
   pre_tasks:
     - name: Include environment vars
       include_vars: env_vars/{{ rails_env }}.yml
+      tags: always
   roles:
     - role: bootstrap_xenial
-      tags: "bootstrap"
+      tags:
+        - bootstrap
+        - always
     - role: common
-      tags: "common"
+      tags: common
     - role: letsencrypt
       when: ssl
       tags: letsencrypt
     - role: nginx
-      tags: "nginx"
+      tags: nginx
     - role: rails
-      tags: "rails"
+      tags: rails
     - role: iso_cmd
-      tags: "iso"
+      tags: iso
