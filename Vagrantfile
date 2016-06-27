@@ -14,9 +14,11 @@ Vagrant.configure("2") do |config|
   config.vm.define "app", primary: true do |instance|
     instance.vm.network "forwarded_port", guest: 80, host: 8001
     instance.vm.network "private_network", ip: "192.168.33.10"
-    instance.vm.synced_folder ".", "/srv/isotope"
+    instance.vm.synced_folder ".", "/srv/isotope", type: "nfs"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "isotope-dev-app-01"
+      vb.memory = 1024
+      vb.cpus = 2
     end
   end
 
@@ -24,12 +26,9 @@ Vagrant.configure("2") do |config|
     instance.vm.network "private_network", ip: "192.168.33.20"
     config.vm.provider "virtualbox" do |vb|
       vb.name = "isotope-dev-db-01"
+      vb.memory = 512
+      vb.cpus = 1
     end
-  end
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = 512
-    vb.cpus = 1
   end
 
   config.vm.provision "ansible" do |ansible|
