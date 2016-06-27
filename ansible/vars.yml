@@ -2,12 +2,12 @@
 apt_packages:
   - git-core        # For git cloning
   - ntp
+  - htop
+
 app_name: isotope
 app_repo: git@github.com:mitchgu/isotope.git
 app_deploy_key: deploy_keys/isotope
 
-db_host: "{{ groups['db'][0] }}"
-domain_name: localhost
 puma_socket: /tmp/{{ app_name }}.sock
 nginx_sites:
   - "{{ app_name }}"
