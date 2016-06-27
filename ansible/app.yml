@@ -12,3 +12,4 @@
     - role: common
     - role: nginx
     - role: rails
+    - role: iso_cmd
