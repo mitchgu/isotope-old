@@ -1,7 +1,6 @@
 ---
 - name: DB server setup
   hosts: db
-  gather_facts: no
   vars_files:
     - vars.yml
   pre_tasks:
@@ -9,10 +8,6 @@
       include_vars: env_vars/{{ rails_env }}.yml
       tags: always
   roles:
-    - role: bootstrap_xenial
-      tags:
-        - bootstrap
-        - always
     - role: common
       tags: common
     - role: postgres

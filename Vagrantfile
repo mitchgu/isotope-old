@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   # Online documentation at https://docs.vagrantup.com.can
   # Search for boxes at https://atlas.hashicorp.com/search.
 
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "geerlingguy/ubuntu1604"
 
   config.vm.define "app", primary: true do |instance|
     instance.vm.network "forwarded_port", guest: 80, host: 8001
