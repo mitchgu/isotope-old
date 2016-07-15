@@ -3,15 +3,12 @@
   hosts: db
   vars_files:
     - vars.yml
-  pre_tasks:
-    - name: Include environment vars
-      include_vars: env_vars/{{ rails_env }}.yml
-      tags: always
   roles:
     - role: common
       tags: common
-    - role: postgres
+    - role: ANXS.postgresql
       tags: postgres
+      become: yes
     - role: DavidWittman.redis
       tags: redis
       become: yes

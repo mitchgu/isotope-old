@@ -47,8 +47,20 @@ Vagrant.configure("2") do |config|
     ansible.extra_vars = {
       vm: true,
       rails_env: "development",
-      app_ips: ["192.168.33.10"],
+      domain_name: "localhost",
+      app_ips: "192.168.33.10/32",
       db_host: "192.168.33.20",
+      db_name: "isotope_dev",
+      db_user: "isotope",
+      db_pass: "isotope",
+      secret_key_base: "647131774d42882d200dbd66ac74150e9d33e146ed4193edc127acc72b6b6d061dd36514e5682c7092b5cf14a73d4b891df243091c119b38a17bf31486e76bfc",
+      superusers: "mitchgu",
+      email_default_host: "localhost:8001",
+      email_from_address: "Isotope Dev<info@localhost>",
+      smtp_address: "smtp.mailgun.org",
+      smtp_username: "isotope-dev@isotope.mitchgu.com",
+      smtp_domain: "isotope.mitchgu.com",
+      smtp_password: "eWVQD90z6IdV8-OLm8OiHQ",
     }
   end
 

@@ -3,10 +3,6 @@
   hosts: app
   vars_files:
     - vars.yml
-  pre_tasks:
-    - name: Include environment vars
-      include_vars: env_vars/{{ rails_env }}.yml
-      tags: always
   roles:
     - role: common
       tags: common

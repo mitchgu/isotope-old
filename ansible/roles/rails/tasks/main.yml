@@ -26,7 +26,7 @@
 
 # Update systemd target
 - include: systemd.yml
-  when: code_updated is defined and vm is not defined
+  when: code_updated is defined or vm is defined
 
 - name: Restart rails
   command: systemctl restart {{ app_name }}.target
