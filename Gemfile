@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'haml-rails', '~> 0.9.0'
 # Bourbon, Neat SASS
-gem 'bourbon'
+gem 'bourbon', '~> 5.0.0.beta.6'
 gem 'neat'
 # Sidekiq for email queuing
 gem 'sidekiq'
