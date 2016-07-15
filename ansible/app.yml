@@ -6,15 +6,8 @@
   roles:
     - role: common
       tags: common
-    - role: src
-      tags: src
-      when: vm is not defined
     - role: letsencrypt
-      when: ssl
+      when: ssl is defined and ssl
       tags: letsencrypt
-    - role: nginx
-      tags: nginx
-    - role: rails
-      tags: rails
-    - role: iso_cmd
-      tags: iso
+    - role: isotope
+      tags: isotope

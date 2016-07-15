@@ -48,3 +48,4 @@ ansible/env_vars/*
 
 # Ansible inventories
 ansible/production
+ansible/test

@@ -1,4 +1,0 @@
-app_name: YOUR_APP_NAME
-app_repo: YOUR_REPO_URL
-app_dir: /srv/{{ app_name }}
-rails_env: development

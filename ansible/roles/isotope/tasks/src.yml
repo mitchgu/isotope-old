@@ -14,26 +14,16 @@
     dest: ~/.ssh/{{ app_name }}
     mode: 0600
 
-- name: Add user to www-data
-  user:
-    name: "{{ ansible_ssh_user }}"
-    group: www-data
-  become: yes
-
-- name: Chgrp srv dir and set permissions
-  file:
-    path: /srv
-    group: www-data
-    mode: 0775
-  become: yes
-
 - name: Clone code repo
   git:
     repo: "{{ app_repo }}"
     dest: "{{ app_dir }}"
+    version: "{{ app_branch | default('master') }}"
     accept_hostkey: yes
     force: yes
     key_file: ~/.ssh/{{ app_name }}
   register: code_updated
-  notify: restart rails
-  when: vm is not defined
+  notify:
+    - precompile assets
+    - migrate db
+    - restart isotope

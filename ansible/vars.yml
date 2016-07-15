@@ -2,6 +2,7 @@
 apt_packages:
   - build-essential
   - git-core
+  - nginx
   - ntp
   - htop
 
